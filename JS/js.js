@@ -34,11 +34,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if(e.target.value.trim() === ''){ //PASO CUATRO: verificar que no haya espacios en blanco con .trim
             mostrarAlerta(`El campo ${e.target.id} es obligatorio ( ͡° ͜ʖ ͡°)`, e.target.parentElement);
             //PASO NUEVE: se limpia la alerta en caso de validación de datos
+            datos[e.target.name] = '';
+            comprobarEmail();
             return;
         }
 
         if (e.target.id === 'email' && !validarEmail(e.target.value)) {
             mostrarAlerta('El email no es válido', e.target.parentElement);
+            datos[e.target.name] = '';
+            comprobarEmail();
             return;
         }
 
@@ -80,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function comprobarEmail() {
+        console.log(datos);
         if(Object.values(datos).includes('')){ //para verificar que todos los campos esten llenos
 
         } else {
