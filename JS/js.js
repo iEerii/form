@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     //PASO DIEZ: se crea un objeto para enviar el formulario
-    const datosCorrectos = {
+    const datos = {
         email: '',
         asunto: '',
         mensaje: '',
     }
-
-    console.log(datosCorrectos);
 
     //PASO DOS: se seleccionan los elementos de la interfaz
     const inputEmail = document.querySelector('#email');
@@ -47,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         limpiarAlerta(e.target.parentElement);
 
         //PASO DIEZ 1.1: asignar los valores 
-        datosCorrectos[e.target.name] = e.target.value.trim().toLowerCase();
+        datos[e.target.name] = e.target.value.trim().toLowerCase();
         //comprobar el objeto de email
         comprobarEmail();
     }
@@ -75,14 +73,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function validarEmail(email) {
+    function validarEmail(datos) {
         const regex =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/ //expresion regular
-        const resultado = regex.test(email);
+        const resultado = regex.test(datos);
         return resultado;
     }
 
     function comprobarEmail() {
-        if(Object.values(email).includes('')){ //para verificar que todos los campos esten llenos
+        if(Object.values(datos).includes('')){ //para verificar que todos los campos esten llenos
 
         } else {
             btnSubmit.classList.remove('opacity-50');
