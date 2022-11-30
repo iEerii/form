@@ -84,13 +84,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function comprobarEmail() {
-        console.log(datos);
         if(Object.values(datos).includes('')){ //para verificar que todos los campos esten llenos
-
+            btnSubmit.classList.remove('opacity-50');
+            btnSubmit.disabled = false;
         } else {
             btnSubmit.classList.remove('opacity-50');
             btnSubmit.disabled = false;
         }
     }
-
 });
