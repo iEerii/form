@@ -26,13 +26,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // });
 
     //OTRA MANERA DE HACERLO CON UNA FUNCION y sin el callback
-    inputEmail.addEventListener('blur', validar);
-    inputAsunto.addEventListener('blur', validar);
-    inputMensaje.addEventListener('blur', validar);
+    inputEmail.addEventListener('input', validar);
+    inputAsunto.addEventListener('input', validar);
+    inputMensaje.addEventListener('input', validar);
 
     function validar(e) {
         if(e.target.value.trim() === ''){ //PASO CUATRO: verificar que no haya espacios en blanco con .trim
-            mostrarAlerta(`El campo ${e.target.id} es obligatorio ( ͡° ͜ʖ ͡°)`, e.target.parentElement);
+            mostrarAlerta(`El campo ${e.target.id} es obligatorio`, e.target.parentElement);
             //PASO NUEVE: se limpia la alerta en caso de validación de datos
             datos[e.target.name] = '';
             comprobarEmail();
@@ -86,10 +86,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function comprobarEmail() {
         if(Object.values(datos).includes('')){ //para verificar que todos los campos esten llenos
             btnSubmit.classList.remove('opacity-50');
-            btnSubmit.disabled = false;
-        } else {
-            btnSubmit.classList.remove('opacity-50');
-            btnSubmit.disabled = false;
-        }
+            btnSubmit.disabled = true;
+            return;
+        } 
+        btnSubmit.classList.remove('opacity-50');
+        btnSubmit.disabled = false;
+        
     }
 });
