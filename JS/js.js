@@ -21,11 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
     btnReset.addEventListener('click', function(e) {
         e.preventDefault();
 
+        //reiniciar el objeto
         datos.email = '';
         datos.asunto = '';
         datos.mensaje = '';
         
         formulario.reset();
+        comprobarEmail();
     })
     
     function validar(e) {
